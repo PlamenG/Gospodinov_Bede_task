@@ -12,7 +12,7 @@ namespace Gospodinov_Bede_task.Objects
     public class Book
     {
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [JsonProperty("author")]
         public string Author { get; set; }
@@ -23,7 +23,7 @@ namespace Gospodinov_Bede_task.Objects
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        public Book(int id, string author, string title, string decription)
+        public Book(long id, string author, string title, string decription)
         {
             this.Id = id;
             this.Author = author;

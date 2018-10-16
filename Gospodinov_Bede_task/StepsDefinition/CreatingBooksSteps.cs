@@ -11,7 +11,7 @@ namespace Gospodinov_Bede_task.StepsDefinition
     public sealed class CreatingBooksSteps
     {
         [Given(@"a book is created with the following properties - (.*), (.*), (.*), (.*)")]
-        public void GivenABookIsCreatedWithTheFollowingProperties_(string title, string author, string description, int id)
+        public void GivenABookIsCreatedWithTheFollowingProperties_(string title, string author, string description, long id)
         {
             Book newBook = new Book(id, author, title, description);
             ScenarioContext.Current.Set<Book>(newBook, "createdBook");
@@ -26,7 +26,7 @@ namespace Gospodinov_Bede_task.StepsDefinition
             ScenarioContext.Current.Set<string>(responseCode, "responseCode");
         }
 
-        [Then(@"the book is available at the service")]
+        [Then(@"the book is available from the service")]
         public void ThenTheBookIsAvailableAtTheService()
         {
             var responseCode = ScenarioContext.Current.Get<string>("responseCode");

@@ -18,8 +18,8 @@ namespace Gospodinov_Bede_task.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("ManagingBooks")]
-    public partial class ManagingBooksFeature
+    [NUnit.Framework.DescriptionAttribute("UsingBooks")]
+    public partial class UsingBooksFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,7 +31,7 @@ namespace Gospodinov_Bede_task.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "ManagingBooks", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "UsingBooks", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -67,6 +67,75 @@ namespace Gospodinov_Bede_task.Features
         public virtual void ScenarioCleanup()
         {
             testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Get book by Id")]
+        [NUnit.Framework.CategoryAttribute("SeedBook")]
+        [NUnit.Framework.CategoryAttribute("DeleteAllBooks")]
+        public virtual void GetBookById()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get book by Id", null, new string[] {
+                        "SeedBook",
+                        "DeleteAllBooks"});
+#line 5
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 6
+testRunner.Given("book is requested by Id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 7
+testRunner.Then("the book has the same properties as expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Get book by search")]
+        [NUnit.Framework.CategoryAttribute("SeedBooks")]
+        [NUnit.Framework.CategoryAttribute("DeleteAllBooks")]
+        [NUnit.Framework.TestCaseAttribute("auto", null)]
+        [NUnit.Framework.TestCaseAttribute("2", null)]
+        [NUnit.Framework.TestCaseAttribute("autoTitle", null)]
+        [NUnit.Framework.TestCaseAttribute("31", null)]
+        [NUnit.Framework.TestCaseAttribute("e1", null)]
+        [NUnit.Framework.TestCaseAttribute("autoTitle9", null)]
+        [NUnit.Framework.TestCaseAttribute("", null)]
+        public virtual void GetBookBySearch(string searchString, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "SeedBooks",
+                    "DeleteAllBooks"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get book by search", null, @__tags);
+#line 11
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 12
+testRunner.Given(string.Format("a book is requested by criteria \"{0}\"", searchString), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 13
+testRunner.Then("the search result is correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Search for too long title")]
+        public virtual void SearchForTooLongTitle()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search for too long title", null, ((string[])(null)));
+#line 24
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 25
+testRunner.Given("a book is requested by criteria \"101 characters loooooooooooooooooooooooooooooooo" +
+                    "ooooooooooooooooooooooooooooooooooooooooong autoTitle\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 26
+testRunner.Then("the response code is Bad Request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
         }
     }
 }

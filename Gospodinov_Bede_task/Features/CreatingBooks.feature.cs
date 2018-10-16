@@ -74,10 +74,11 @@ namespace Gospodinov_Bede_task.Features
         [NUnit.Framework.CategoryAttribute("DeleteAllBooks")]
         [NUnit.Framework.TestCaseAttribute("autoTitle", "autoAuthor", "autoDescription", "91", null)]
         [NUnit.Framework.TestCaseAttribute("autoTitle", "autoAuthor", "", "91", null)]
-        [NUnit.Framework.TestCaseAttribute("very very very very very very very very very very very very very very very very v" +
-            "ery long autoTitle", "567 very very long autoAuthor", "very very very very very very very very very very very very very very very very v" +
-            "ery long very very very very very very very very very very very very very very v" +
-            "ery very very long  autoDescription", "1234567890", null)]
+        [NUnit.Framework.TestCaseAttribute("100 characters looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" +
+            "ooooooong autoTitle", "autoAuthor", "autoDescription", "91", null)]
+        [NUnit.Framework.TestCaseAttribute("autoTitle", "30 characters loong autoAuthor", "autoDescription", "91", null)]
+        [NUnit.Framework.TestCaseAttribute("autoTitle", "autoAuthor", @"900 autoDescription looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong", "91", null)]
+        [NUnit.Framework.TestCaseAttribute("autoTitle", "autoAuthor", "autoDescription", "2147483647", null)]
         public virtual void CreateABook(string title, string author, string description, string id, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -95,7 +96,7 @@ testRunner.Given(string.Format("a book is created with the following properties 
 #line 6
 testRunner.When("create book request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 7
-testRunner.Then("the book is available at the service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then("the book is available from the service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -103,34 +104,34 @@ testRunner.Then("the book is available at the service", ((string)(null)), ((Tech
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("create a book with wrong property")]
         [NUnit.Framework.CategoryAttribute("DeleteAllBooks")]
+        [NUnit.Framework.CategoryAttribute("SeedBook")]
         [NUnit.Framework.TestCaseAttribute("autoTitle", "", "autoDescription", "91", null)]
         [NUnit.Framework.TestCaseAttribute("", "autoAuthor", "autoDescription", "91", null)]
         [NUnit.Framework.TestCaseAttribute("autoTitle", "autoAuthor", "autoDescription", "-1", null)]
         [NUnit.Framework.TestCaseAttribute("autoTitle", "autoAuthor", "autoDescription", "0", null)]
-        [NUnit.Framework.TestCaseAttribute("too long very very very very very very very very very very very very very very ve" +
-            "ry very very long autoTitle", "567 very very long autoAuthor", "very very very very very very very very very very very very very very very very v" +
-            "ery long very very very very very very very very very very very very very very v" +
-            "ery very very long  autoDescription", "1234567890", null)]
-        [NUnit.Framework.TestCaseAttribute("autoTitle", "too long very very long autoAuthor", "very very very very very very very very very very very very very very very very v" +
-            "ery long very very very very very very very very very very very very very very v" +
-            "ery very very long  autoDescription", "1234567890", null)]
+        [NUnit.Framework.TestCaseAttribute("autoTitle", "autoAuthor", "autoDescription", "2147483648", null)]
+        [NUnit.Framework.TestCaseAttribute("101 characters looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" +
+            "oooooooong autoTitle", "autoAuthor", "autoDescription", "91", null)]
+        [NUnit.Framework.TestCaseAttribute("autoTitle", "31 characters looong autoAuthor", "autoDescription", "91", null)]
+        [NUnit.Framework.TestCaseAttribute("autoTitle", "autoAuthor", "autoDescription", "33", null)]
         public virtual void CreateABookWithWrongProperty(string title, string author, string description, string id, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "DeleteAllBooks"};
+                    "DeleteAllBooks",
+                    "SeedBook"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("create a book with wrong property", null, @__tags);
-#line 15
+#line 19
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 16
+#line 20
 testRunner.Given(string.Format("a book is created with the following properties - {0}, {1}, {2}, {3}", title, author, description, id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 17
+#line 21
 testRunner.When("create book request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 18
+#line 22
 testRunner.Then("the response code is Bad Request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

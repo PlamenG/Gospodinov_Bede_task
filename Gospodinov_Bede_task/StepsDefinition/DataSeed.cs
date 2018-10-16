@@ -19,6 +19,25 @@ namespace Gospodinov_Bede_task.StepsDefinition
             ExceptionHandler.ThrowIfStatusCodeNotOk(response);
         }
 
+        [BeforeScenario("SeedBooks")]
+        public void SeedBooks()
+        {
+            List<Book> books = new List<Book>();
+
+            for (int i = 1; i <= 10; i++)
+            {
+                books.Add(new Book(i, "autoAuthor" + i, "autoTitle" + i, "autoDescription" + i));
+            }
+
+            ScenarioContext.Current.Set<List<Book>>(books, "seededBooks");
+
+            foreach (var book in books)
+            {
+                string response = CrudBook.PostNewBook(book);
+                ExceptionHandler.ThrowIfStatusCodeNotOk(response);
+            }
+        }
+
         [AfterScenario("DeleteSeededBook")]
         public void DeleteSeededBook()
         {

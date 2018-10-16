@@ -5,3 +5,8 @@
 .vs/Gospodinov_Bede_task/v15/Server/sqlite3/storage.ide-shm
 .vs/Gospodinov_Bede_task/v15/Server/sqlite3/storage.ide-wal
 .vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+*.pdb
+Gospodinov_Bede_task/obj/Debug/Gospodinov_Bede_task.pdb
+Gospodinov_Bede_task/bin/Debug/Gospodinov_Bede_task.pdb
+*.pdb

@@ -17,28 +17,31 @@ namespace Gospodinov_Bede_task.Helper
 
         public static string PostNewBook(Object content)
         {
-            var httpResponseMessage = Client.client.PostAsJsonAsync(url + bookActionEndPoint, content);
-            return RequestResponseStatusCodeSynchronously(httpResponseMessage);
+            Task<HttpResponseMessage> responseMessage = Client.client.PostAsJsonAsync(url + bookActionEndPoint, content);
+            return RequestResponseStatusCodeSynchronously(responseMessage);
         }
 
         public static List<Book> GetAllBooks()
         {
             Task<HttpResponseMessage> responseMessage = Client.client.GetAsync(url + getAllBooksEndPoint);
-
             return ResponseContentMultipleBooks(responseMessage);
         }
 
-        public static Book GetBook(int id)
+        public static List<Book> GetBooksByTitle(string titleSearch)
+        {
+            Task<HttpResponseMessage> responseMessage = Client.client.GetAsync(url + getAllBooksEndPoint + titleSearch);
+            return ResponseContentMultipleBooks(responseMessage);
+        }
+
+        public static Book GetBook(long id)
         {
             Task<HttpResponseMessage> responseMessage = Client.client.GetAsync(url + bookActionEndPoint + @"/" + id.ToString());
-
             return ResponseContentSingleBook(responseMessage);
         }
 
-        public static string DeleteBook(int id)
+        public static string DeleteBook(long id)
         {
-            var response = Client.client.DeleteAsync(url + bookActionEndPoint + @"/" + id.ToString());
-
+            Task<HttpResponseMessage> response = Client.client.DeleteAsync(url + bookActionEndPoint + @"/" + id.ToString());
             return RequestResponseStatusCodeSynchronously(response);
         }
 

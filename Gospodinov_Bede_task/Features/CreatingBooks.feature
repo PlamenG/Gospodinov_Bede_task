@@ -4,14 +4,18 @@
 Scenario Outline: create a book
 Given a book is created with the following properties - <Title>, <Author>, <Description>, <Id>
 When create book request is executed
-Then the book is available at the service
+Then the book is available from the service
 Examples: 
 | Title     | Author     | Description     | Id |
 | autoTitle | autoAuthor | autoDescription | 91 |
 | autoTitle | autoAuthor |				   | 91 |
-| very very very very very very very very very very very very very very very very very long autoTitle |  567 very very long autoAuthor |  very very very very very very very very very very very very very very very very very long very very very very very very very very very very very very very very very very very long  autoDescription | 1234567890 |
+| 100 characters loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong autoTitle |  autoAuthor | autoDescription | 91 |
+| autoTitle | 30 characters loong autoAuthor | autoDescription | 91 |
+| autoTitle | autoAuthor | 900 autoDescription looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong | 91 |
+| autoTitle | autoAuthor | autoDescription | 2147483647 |
 
 @DeleteAllBooks
+@SeedBook
 Scenario Outline: create a book with wrong property
 Given a book is created with the following properties - <Title>, <Author>, <Description>, <Id>
 When create book request is executed
@@ -22,5 +26,9 @@ Examples:
 |           | autoAuthor | autoDescription | 91 |
 | autoTitle | autoAuthor | autoDescription | -1 |
 | autoTitle | autoAuthor | autoDescription | 0  |
-| too long very very very very very very very very very very very very very very very very very long autoTitle |  567 very very long autoAuthor |  very very very very very very very very very very very very very very very very very long very very very very very very very very very very very very very very very very very long  autoDescription | 1234567890 |
-| autoTitle |  too long very very long autoAuthor |  very very very very very very very very very very very very very very very very very long very very very very very very very very very very very very very very very very very long  autoDescription | 1234567890 |
+| autoTitle | autoAuthor | autoDescription | 2147483648  |
+| 101 characters looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong autoTitle | autoAuthor | autoDescription | 91 |
+| autoTitle |  31 characters looong autoAuthor | autoDescription | 91 |
+# Same Id as the seeded book
+| autoTitle | autoAuthor | autoDescription | 33 |
+
