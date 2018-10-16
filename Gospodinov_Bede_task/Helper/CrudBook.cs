@@ -33,6 +33,12 @@ namespace Gospodinov_Bede_task.Helper
             return ResponseContentMultipleBooks(responseMessage);
         }
 
+        public static string GetBooksByTitleRequestResponseCode(string titleSearch)
+        {
+            Task<HttpResponseMessage> responseMessage = Client.client.GetAsync(url + getAllBooksEndPoint + titleSearch);
+            return RequestResponseStatusCodeSynchronously(responseMessage);
+        }
+
         public static Book GetBook(long id)
         {
             Task<HttpResponseMessage> responseMessage = Client.client.GetAsync(url + bookActionEndPoint + @"/" + id.ToString());

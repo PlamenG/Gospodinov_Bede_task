@@ -18,20 +18,20 @@ namespace Gospodinov_Bede_task.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("UsingBooks")]
-    public partial class UsingBooksFeature
+    [NUnit.Framework.DescriptionAttribute("RetrievingBooks")]
+    public partial class RetrievingBooksFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "UsingBooks.feature"
+#line 1 "RetrievingBooks.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "UsingBooks", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "RetrievingBooks", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -96,10 +96,12 @@ testRunner.Then("the book has the same properties as expected", ((string)(null))
         [NUnit.Framework.TestCaseAttribute("auto", null)]
         [NUnit.Framework.TestCaseAttribute("2", null)]
         [NUnit.Framework.TestCaseAttribute("autoTitle", null)]
-        [NUnit.Framework.TestCaseAttribute("31", null)]
         [NUnit.Framework.TestCaseAttribute("e1", null)]
         [NUnit.Framework.TestCaseAttribute("autoTitle9", null)]
         [NUnit.Framework.TestCaseAttribute("", null)]
+        [NUnit.Framework.TestCaseAttribute("31", null)]
+        [NUnit.Framework.TestCaseAttribute("autotitle", null)]
+        [NUnit.Framework.TestCaseAttribute("AUTOTITLE", null)]
         public virtual void GetBookBySearch(string searchString, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -122,17 +124,17 @@ testRunner.Then("the search result is correct", ((string)(null)), ((TechTalk.Spe
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Search for too long title")]
-        public virtual void SearchForTooLongTitle()
+        [NUnit.Framework.DescriptionAttribute("Search for too long title is not possible")]
+        public virtual void SearchForTooLongTitleIsNotPossible()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search for too long title", null, ((string[])(null)));
-#line 24
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search for too long title is not possible", null, ((string[])(null)));
+#line 27
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 25
+#line 28
 testRunner.Given("a book is requested by criteria \"101 characters loooooooooooooooooooooooooooooooo" +
                     "ooooooooooooooooooooooooooooooooooooooooong autoTitle\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 26
+#line 29
 testRunner.Then("the response code is Bad Request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

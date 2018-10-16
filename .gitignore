@@ -10,3 +10,5 @@
 Gospodinov_Bede_task/obj/Debug/Gospodinov_Bede_task.pdb
 Gospodinov_Bede_task/bin/Debug/Gospodinov_Bede_task.pdb
 *.pdb
+*.tmp
+*.cache

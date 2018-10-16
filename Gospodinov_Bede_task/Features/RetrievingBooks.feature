@@ -1,4 +1,4 @@
-﻿Feature: UsingBooks
+﻿Feature: RetrievingBooks
 
 @SeedBook
 @DeleteAllBooks
@@ -16,11 +16,14 @@ Examples:
 | auto         |
 | 2 |
 | autoTitle |
-| 31 |
 | e1 |
 | autoTitle9 |
 |  |
+# For no results
+| 31 |
+| autotitle |
+| AUTOTITLE |
 
-Scenario: Search for too long title
+Scenario: Search for too long title is not possible
 Given a book is requested by criteria "101 characters looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong autoTitle"
 Then the response code is Bad Request

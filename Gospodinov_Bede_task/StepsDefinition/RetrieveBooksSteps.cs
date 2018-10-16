@@ -8,7 +8,7 @@ using TechTalk.SpecFlow;
 namespace Gospodinov_Bede_task.StepsDefinition
 {
     [Binding]
-    public class UsingBooksSteps
+    public class RetrieveBooksSteps
     {
         [StepDefinition(@"book is requested by Id")]
         public void GivenBookIsRequestedById()
@@ -28,6 +28,9 @@ namespace Gospodinov_Bede_task.StepsDefinition
         [Given(@"a book is requested by criteria ""(.*)""")]
         public void GivenABookIsRequestedByCriteria(string searchCriteria)
         {
+            ScenarioContext.Current.Set<string>(CrudBook.GetBooksByTitleRequestResponseCode(searchCriteria),
+                                                "responseCode");
+
             List<Book> foundBooks = CrudBook.GetBooksByTitle(searchCriteria);
 
             ScenarioContext.Current.Set<string>(searchCriteria, "searchCriteria");

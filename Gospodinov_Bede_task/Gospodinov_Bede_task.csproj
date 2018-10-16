@@ -84,10 +84,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CreatingBooks.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\UsingBooks.feature.cs">
+    <Compile Include="Features\RetrievingBooks.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UsingBooks.feature</DependentUpon>
+      <DependentUpon>RetrievingBooks.feature</DependentUpon>
     </Compile>
     <Compile Include="Helper\AssertHelper.cs" />
     <Compile Include="Helper\CrudBook.cs" />
@@ -95,7 +95,7 @@
     <Compile Include="Helper\Client.cs" />
     <Compile Include="Objects\Book.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StepsDefinition\UsingBooksSteps.cs" />
+    <Compile Include="StepsDefinition\RetrieveBooksSteps.cs" />
     <Compile Include="StepsDefinition\CreatingBooksSteps.cs" />
     <Compile Include="StepsDefinition\DataSeed.cs" />
   </ItemGroup>
@@ -107,9 +107,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CreatingBooks.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\UsingBooks.feature">
+    <None Include="Features\RetrievingBooks.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>UsingBooks.feature.cs</LastGenOutput>
+      <LastGenOutput>RetrievingBooks.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
