@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Gospodinov_Bede_task.Objects
 {
-    public class ResponseCodeAndPayload
+    public class ResponseCodeAndPayload<T>
     {
-        private string responsCode;
-        private Object payLoadObject;
+        public string ResponseCode { get; private set; }
+        public T PayLoadObject { get; private set; }
 
-        public ResponseCodeAndPayload(string responsCode, object payLoadObject)
+        public ResponseCodeAndPayload(string responseCode, T payLoadObject)
         {
-            this.responsCode = responsCode;
-            this.payLoadObject = payLoadObject;
+            this.ResponseCode = responseCode;
+            this.PayLoadObject = payLoadObject;
         }
     }
 }

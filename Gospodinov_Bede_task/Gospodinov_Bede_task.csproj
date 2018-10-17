@@ -89,6 +89,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RetrievingBooks.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\DeleteBook.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeleteBook.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\UpdateBook.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -102,9 +107,11 @@
     <Compile Include="Objects\ResponseCodeAndPayload.cs" />
     <Compile Include="Objects\ResponseMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StepsDefinition\DeleteBookSteps.cs" />
     <Compile Include="StepsDefinition\RetrieveBooksSteps.cs" />
     <Compile Include="StepsDefinition\CreatingBooksSteps.cs" />
     <Compile Include="StepsDefinition\DataSeed.cs" />
+    <Compile Include="StepsDefinition\UpdateBookSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -117,6 +124,10 @@
     <None Include="Features\RetrievingBooks.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>RetrievingBooks.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\DeleteBook.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DeleteBook.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\UpdateBook.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

@@ -12,16 +12,16 @@ namespace Gospodinov_Bede_task.Objects
     public class Book
     {
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public long Id { get; private set; }
 
         [JsonProperty("author")]
-        public string Author { get; set; }
+        public string Author { get; private set; }
 
         [JsonProperty("title")]
-        public string Title { get; set; }
+        public string Title { get; private set; }
 
         [JsonProperty("description")]
-        public string Description { get; set; }
+        public string Description { get; private set; }
 
         public Book(long id, string author, string title, string decription)
         {

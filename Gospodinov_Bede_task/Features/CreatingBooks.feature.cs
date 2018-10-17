@@ -96,7 +96,7 @@ testRunner.Given(string.Format("a book is created with the following properties 
 #line 6
 testRunner.When("create book request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 7
-testRunner.Then("the book is available from the service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then("the book is available from the service as expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

@@ -4,7 +4,7 @@
 Scenario Outline: create a book
 Given a book is created with the following properties - <Title>, <Author>, <Description>, <Id>
 When create book request is executed
-Then the book is available from the service
+Then the book is available from the service as expected
 Examples: 
 | Title     | Author     | Description     | Id |
 | autoTitle | autoAuthor | autoDescription | 91 |

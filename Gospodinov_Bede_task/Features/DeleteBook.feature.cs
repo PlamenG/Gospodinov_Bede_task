@@ -18,20 +18,20 @@ namespace Gospodinov_Bede_task.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("UpdateBook")]
-    public partial class UpdateBookFeature
+    [NUnit.Framework.DescriptionAttribute("DeleteBook")]
+    public partial class DeleteBookFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "UpdateBook.feature"
+#line 1 "DeleteBook.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "UpdateBook", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "DeleteBook", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -70,35 +70,21 @@ namespace Gospodinov_Bede_task.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Update a book")]
+        [NUnit.Framework.DescriptionAttribute("Delete a book")]
         [NUnit.Framework.CategoryAttribute("SeedBooks")]
         [NUnit.Framework.CategoryAttribute("DeleteAllBooks")]
-        [NUnit.Framework.TestCaseAttribute("autoTitle20", "autoAuthor20", "autoDescription20", "2", null)]
-        [NUnit.Framework.TestCaseAttribute("autoTitle", "autoAuthor", "", "7", null)]
-        [NUnit.Framework.TestCaseAttribute("100 characters looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" +
-            "ooooooong autoTitle", "autoAuthor", "autoDescription", "4", null)]
-        [NUnit.Framework.TestCaseAttribute("autoTitle", "30 characters loong autoAuthor", "", "91", null)]
-        [NUnit.Framework.TestCaseAttribute("autoTitle", "autoAuthor", "", "1", null)]
-        [NUnit.Framework.TestCaseAttribute("autoTitle", "autoAuthor", "", "3", null)]
-        public virtual void UpdateABook(string title, string author, string description, string id, string[] exampleTags)
+        public virtual void DeleteABook()
         {
-            string[] @__tags = new string[] {
-                    "SeedBooks",
-                    "DeleteAllBooks"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update a book", null, @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Delete a book", null, new string[] {
+                        "SeedBooks",
+                        "DeleteAllBooks"});
 #line 5
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 6
-testRunner.Given(string.Format("a book is updated with the following properties - {0}, {1}, {2}, {3}", title, author, description, id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+testRunner.Given("book is deleted by Id 6", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
-testRunner.When("update book request is executed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 8
-testRunner.Then("the book is available from the service as expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then("the book is no longer availabl in the service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

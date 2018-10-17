@@ -14,39 +14,55 @@ namespace Gospodinov_Bede_task.StepsDefinition
         public void GivenABookIsCreatedWithTheFollowingProperties_(string title, string author, string description, long id)
         {
             Book newBook = new Book(id, author, title, description);
-            ScenarioContext.Current.Set<Book>(newBook, "createdBook");
+            ScenarioContext.Current.Set<Book>(newBook, "testedBook");
         }
 
 
         [When(@"create book request is executed")]
         public void WhenCreateBookRequestIsExecuted()
         {
-            string responseCode = CrudBook.PostNewBook(ScenarioContext.Current.Get<Book>("createdBook"));
+            ResponseCodeAndPayload<Book> responseCodeAdnPayload = CrudBook.PostNewBook(ScenarioContext.Current.Get<Book>("testedBook"));
 
-            ScenarioContext.Current.Set<string>(responseCode, "responseCode");
+            ScenarioContext.Current.Set<ResponseCodeAndPayload<Book>>(responseCodeAdnPayload, "responseCodeAdnPayload");
         }
 
-        [Then(@"the book is available from the service")]
-        public void ThenTheBookIsAvailableAtTheService()
+        [Then(@"the book is available from the service as expected")]
+        public void ThenTheBookIsUpdated()
         {
-            var responseCode = ScenarioContext.Current.Get<string>("responseCode");
+            var response = ScenarioContext.Current.Get<ResponseCodeAndPayload<Book>>("responseCodeAdnPayload");
             Assert.AreEqual(HttpStatusCode.OK.ToString()
-                            , responseCode
-                            , "Book creation failed with {0}", responseCode);
+                            , response.ResponseCode
+                            , "Book creation failed with {0}", response.ResponseCode);
 
-            Book actualBook = CrudBook.GetBook(ScenarioContext.Current.Get<Book>("createdBook").Id);
+            Book actualBookInService = CrudBook.GetBook(response.PayLoadObject.Id).PayLoadObject;
 
-            AssertHelper.PropertyValuesAreEquals(ScenarioContext.Current.Get<Book>("createdBook"),
-                                                actualBook);
+            AssertHelper.PropertyValuesAreEquals(ScenarioContext.Current.Get<Book>("testedBook"),
+                                                response.PayLoadObject);
+            AssertHelper.PropertyValuesAreEquals(ScenarioContext.Current.Get<Book>("testedBook"),
+                                                actualBookInService);
         }
+
+        //[Then(@"the abook is available from the service")]
+        //public void ThenTheBookIsAvailableAtTheService()
+        //{
+        //    var responseCode = ScenarioContext.Current.Get<string>("responseCode");
+        //    Assert.AreEqual(HttpStatusCode.OK.ToString()
+        //                    , responseCode
+        //                    , "Book creation failed with {0}", responseCode);
+
+        //    Book actualBook = CrudBook.GetBook(ScenarioContext.Current.Get<Book>("testedBook").Id).PayLoadObject;
+
+        //    AssertHelper.PropertyValuesAreEquals(ScenarioContext.Current.Get<Book>("testedBook"),
+        //                                        actualBook);
+        //}
 
         [Then(@"the response code is Bad Request")]
         public void ThenTheResponseCodeIsBadRequest()
         {
-            var responseCode = ScenarioContext.Current.Get<string>("responseCode");
+            var response = ScenarioContext.Current.Get<ResponseCodeAndPayload<Book>>("responseCodeAdnPayload");
             Assert.AreEqual(HttpStatusCode.BadRequest.ToString()
-                            , responseCode
-                            , "Book creation failed with {0}", responseCode);
+                            , response.ResponseCode
+                            , "Book creation failed with {0}", response);
         }
 
 

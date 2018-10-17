@@ -13,7 +13,7 @@ namespace Gospodinov_Bede_task.Helper
             PropertyInfo[] properties = expected.GetType().GetProperties();
             foreach (PropertyInfo property in properties)
             {
-                PropertyEvaluation(expected, actual, property);
+                PropertyEvaluationEqual(expected, actual, property);
             }
         }
 
@@ -27,12 +27,12 @@ namespace Gospodinov_Bede_task.Helper
                 PropertyInfo[] properties = expectedList[i].GetType().GetProperties();
                 foreach (PropertyInfo property in properties)
                 {
-                    PropertyEvaluation(expectedList[i], actualList[i], property);
+                    PropertyEvaluationEqual(expectedList[i], actualList[i], property);
                 }
             }
         }
 
-        private static void PropertyEvaluation(object expected, object actual, PropertyInfo property)
+        private static void PropertyEvaluationEqual(object expected, object actual, PropertyInfo property)
         {
             object actualValue = property.GetValue(actual, null);
             object expectedValue = property.GetValue(expected, null);

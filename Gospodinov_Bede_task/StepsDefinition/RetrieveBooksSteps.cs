@@ -13,7 +13,7 @@ namespace Gospodinov_Bede_task.StepsDefinition
         [StepDefinition(@"book is requested by Id")]
         public void GivenBookIsRequestedById()
         {
-            Book foundBook = CrudBook.GetBook(ScenarioContext.Current.Get<Book>("seededBook").Id);
+            Book foundBook = CrudBook.GetBook(ScenarioContext.Current.Get<Book>("seededBook").Id).PayLoadObject;
 
             ScenarioContext.Current.Set<Book>(foundBook, "foundBook");
         }
@@ -28,10 +28,11 @@ namespace Gospodinov_Bede_task.StepsDefinition
         [Given(@"a book is requested by criteria ""(.*)""")]
         public void GivenABookIsRequestedByCriteria(string searchCriteria)
         {
-            ScenarioContext.Current.Set<string>(CrudBook.GetBooksByTitleRequestResponseCode(searchCriteria),
-                                                "responseCode");
+            ScenarioContext.Current.Set<ResponseCodeAndPayload<List<Book>>>(
+                                                CrudBook.GetBooksByTitle(searchCriteria).ResponseCode,
+                                                "responseCodeAdnPayload");
 
-            List<Book> foundBooks = CrudBook.GetBooksByTitle(searchCriteria);
+            List<Book> foundBooks = CrudBook.GetBooksByTitle(searchCriteria).PayLoadObject;
 
             ScenarioContext.Current.Set<string>(searchCriteria, "searchCriteria");
             ScenarioContext.Current.Set<List<Book>>(foundBooks, "foundBooks");

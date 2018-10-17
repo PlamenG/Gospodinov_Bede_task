@@ -15,8 +15,8 @@ namespace Gospodinov_Bede_task.StepsDefinition
            
             ScenarioContext.Current.Set<Book>(book, "seededBook");
 
-            string response = CrudBook.PostNewBook(book);
-            ExceptionHandler.ThrowIfStatusCodeNotOk(response);
+            ResponseCodeAndPayload<Book> response = CrudBook.PostNewBook(book);
+            ExceptionHandler.ThrowIfStatusCodeNotOk(response.ResponseCode);
         }
 
         [BeforeScenario("SeedBooks")]
@@ -33,8 +33,8 @@ namespace Gospodinov_Bede_task.StepsDefinition
 
             foreach (var book in books)
             {
-                string response = CrudBook.PostNewBook(book);
-                ExceptionHandler.ThrowIfStatusCodeNotOk(response);
+                ResponseCodeAndPayload<Book> response = CrudBook.PostNewBook(book);
+                ExceptionHandler.ThrowIfStatusCodeNotOk(response.ResponseCode);
             }
         }
 
@@ -44,18 +44,17 @@ namespace Gospodinov_Bede_task.StepsDefinition
             var book = ScenarioContext.Current.Get<Book>("seededBook");
             var response = CrudBook.DeleteBook(book.Id);
 
-            ExceptionHandler.ThrowIfStatusCodeNotNoContent(response);
+            ExceptionHandler.ThrowIfStatusCodeNotNoContent(response.ResponseCode);
         }
 
         [AfterScenario("DeleteAllBooks")]
         public void DeleteAllBooks()
         {
-            List<Book> books = CrudBook.GetAllBooks();
+            List<Book> books = CrudBook.GetAllBooks().PayLoadObject;
 
             foreach (var book in books)
             {
-                var response = CrudBook.DeleteBook(book.Id);
-                ExceptionHandler.ThrowIfStatusCodeNotNoContent(response);
+                ExceptionHandler.ThrowIfStatusCodeNotNoContent(CrudBook.DeleteBook(book.Id).ResponseCode);
             }
         }
     }

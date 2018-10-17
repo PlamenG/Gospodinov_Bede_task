@@ -10,7 +10,7 @@ namespace Gospodinov_Bede_task.Objects
     public class ResponseMessageContent
     {
         [JsonProperty("Message")]
-        private string Message { get; set; }
+        public string Message { get; private set; }
 
         public ResponseMessageContent(string message)
         {
