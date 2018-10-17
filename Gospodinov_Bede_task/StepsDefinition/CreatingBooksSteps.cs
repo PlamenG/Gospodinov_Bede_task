@@ -41,21 +41,7 @@ namespace Gospodinov_Bede_task.StepsDefinition
             AssertHelper.PropertyValuesAreEquals(ScenarioContext.Current.Get<Book>("testedBook"),
                                                 actualBookInService);
         }
-
-        //[Then(@"the abook is available from the service")]
-        //public void ThenTheBookIsAvailableAtTheService()
-        //{
-        //    var responseCode = ScenarioContext.Current.Get<string>("responseCode");
-        //    Assert.AreEqual(HttpStatusCode.OK.ToString()
-        //                    , responseCode
-        //                    , "Book creation failed with {0}", responseCode);
-
-        //    Book actualBook = CrudBook.GetBook(ScenarioContext.Current.Get<Book>("testedBook").Id).PayLoadObject;
-
-        //    AssertHelper.PropertyValuesAreEquals(ScenarioContext.Current.Get<Book>("testedBook"),
-        //                                        actualBook);
-        //}
-
+        
         [Then(@"the response code is Bad Request")]
         public void ThenTheResponseCodeIsBadRequest()
         {
@@ -64,7 +50,5 @@ namespace Gospodinov_Bede_task.StepsDefinition
                             , response.ResponseCode
                             , "Book creation failed with {0}", response);
         }
-
-
     }
 }

@@ -29,7 +29,7 @@ namespace Gospodinov_Bede_task.StepsDefinition
         public void GivenABookIsRequestedByCriteria(string searchCriteria)
         {
             ScenarioContext.Current.Set<ResponseCodeAndPayload<List<Book>>>(
-                                                CrudBook.GetBooksByTitle(searchCriteria).ResponseCode,
+                                                CrudBook.GetBooksByTitle(searchCriteria),
                                                 "responseCodeAdnPayload");
 
             List<Book> foundBooks = CrudBook.GetBooksByTitle(searchCriteria).PayLoadObject;
@@ -54,6 +54,15 @@ namespace Gospodinov_Bede_task.StepsDefinition
             }
             AssertHelper.AssertListsAreEquals(booksFromSearch,
                                               ScenarioContext.Current.Get <List<Book>>("foundBooks"));
+        }
+
+        [Then(@"the response code for searching is Bad Request")]
+        public void ThenTheResponseCodeForSearchingIsBadRequest()
+        {
+            var response = ScenarioContext.Current.Get<ResponseCodeAndPayload<List<Book>>>("responseCodeAdnPayload");
+            Assert.AreEqual(HttpStatusCode.BadRequest.ToString()
+                            , response.ResponseCode
+                            , "Request did NOT fail with Bad Request error but was - {0}", response);
         }
 
     }

@@ -26,4 +26,4 @@ Examples:
 
 Scenario: Search for too long title is not possible
 Given a book is requested by criteria "101 characters looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong autoTitle"
-Then the response code is Bad Request
+Then the response code for searching is Bad Request

@@ -77,7 +77,7 @@ namespace Gospodinov_Bede_task.Features
         [NUnit.Framework.TestCaseAttribute("autoTitle", "autoAuthor", "", "7", null)]
         [NUnit.Framework.TestCaseAttribute("100 characters looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo" +
             "ooooooong autoTitle", "autoAuthor", "autoDescription", "4", null)]
-        [NUnit.Framework.TestCaseAttribute("autoTitle", "30 characters loong autoAuthor", "", "91", null)]
+        [NUnit.Framework.TestCaseAttribute("autoTitle", "30 characters loong autoAuthor", "", "9", null)]
         [NUnit.Framework.TestCaseAttribute("autoTitle", "autoAuthor", "", "1", null)]
         [NUnit.Framework.TestCaseAttribute("autoTitle", "autoAuthor", "", "3", null)]
         public virtual void UpdateABook(string title, string author, string description, string id, string[] exampleTags)

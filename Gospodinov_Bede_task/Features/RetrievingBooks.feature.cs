@@ -135,7 +135,7 @@ this.ScenarioInitialize(scenarioInfo);
 testRunner.Given("a book is requested by criteria \"101 characters loooooooooooooooooooooooooooooooo" +
                     "ooooooooooooooooooooooooooooooooooooooooong autoTitle\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 29
-testRunner.Then("the response code is Bad Request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then("the response code for searching is Bad Request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

@@ -14,8 +14,16 @@ namespace Gospodinov_Bede_task.StepsDefinition
     public sealed class UpdateBookSteps
     {
         [Given(@"a book is updated with the following properties - (.*), (.*), (.*), (.*)")]
-        public void GivenABookIsUpdatedWithTheFollowingProperties(string title, string author, string description, long id)
+        public void GivenABookIsUpdatedWithTheFollowingProperties(string title, 
+                                                                  string author, 
+                                                                  string description, 
+                                                                  long id)
         {
+            Book unchangedBook = CrudBook.GetBook(id).PayLoadObject;
+            if (description == string.Empty)
+            {
+                description = unchangedBook.Description;
+            }
             Book newBook = new Book(id, author, title, description);
             ScenarioContext.Current.Set<Book>(newBook, "testedBook");
         }

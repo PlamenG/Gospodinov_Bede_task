@@ -12,6 +12,6 @@ Examples:
 | autoTitle20	| autoAuthor20	| autoDescription20 | 2  |
 | autoTitle		| autoAuthor	| 					| 7	 |
 | 100 characters loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong autoTitle |  autoAuthor | autoDescription | 4 |
-| autoTitle		| 30 characters loong autoAuthor	|  | 91 |
+| autoTitle		| 30 characters loong autoAuthor	|  | 9 |
 | autoTitle		| autoAuthor	|					| 1  |
 | autoTitle		| autoAuthor	|					| 3  |
