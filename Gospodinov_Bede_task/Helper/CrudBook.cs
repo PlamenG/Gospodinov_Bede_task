@@ -24,13 +24,13 @@ namespace Gospodinov_Bede_task.Helper
         public static List<Book> GetAllBooks()
         {
             Task<HttpResponseMessage> responseMessage = Client.client.GetAsync(url + getAllBooksEndPoint);
-            return ResponseContentMultipleBooks(responseMessage);
+            return GetObjectFromResponse<List<Book>>(responseMessage);
         }
 
         public static List<Book> GetBooksByTitle(string titleSearch)
         {
             Task<HttpResponseMessage> responseMessage = Client.client.GetAsync(url + getAllBooksEndPoint + titleSearch);
-            return ResponseContentMultipleBooks(responseMessage);
+            return GetObjectFromResponse<List<Book>>(responseMessage);
         }
 
         public static string GetBooksByTitleRequestResponseCode(string titleSearch)
@@ -42,7 +42,7 @@ namespace Gospodinov_Bede_task.Helper
         public static Book GetBook(long id)
         {
             Task<HttpResponseMessage> responseMessage = Client.client.GetAsync(url + bookActionEndPoint + @"/" + id.ToString());
-            return ResponseContentSingleBook(responseMessage);
+            return GetObjectFromResponse<Book>(responseMessage);
         }
 
         public static string DeleteBook(long id)
@@ -51,6 +51,12 @@ namespace Gospodinov_Bede_task.Helper
             return RequestResponseStatusCodeSynchronously(response);
         }
 
+        public static ResponseCodeAndPayload UpdateBook(long id)
+        {
+            Task<HttpResponseMessage> response = Client.client.DeleteAsync(url + bookActionEndPoint + @"/" + id.ToString());
+            return new ResponseCodeAndPayload(RequestResponseStatusCodeSynchronously(response),
+                                              GetObjectFromResponse<Book>(response));
+        }
 
         private static string RequestResponseStatusCodeSynchronously(Task<HttpResponseMessage> httpResponseMessage)
         {
@@ -58,30 +64,35 @@ namespace Gospodinov_Bede_task.Helper
             return httpResponseMessage.Result.StatusCode.ToString();
         }
 
-        private static Book ResponseContentSingleBook(Task<HttpResponseMessage> httpResponseMessage)
-        {
-            httpResponseMessage.Wait();
+        //private static Book ResponseContentSingleBook(Task<HttpResponseMessage> httpResponseMessage)
+        //{
+        //    httpResponseMessage.Wait();
+        //    return GetObjectFromResponse<Book>(httpResponseMessage);
+        //}
 
-            if (httpResponseMessage.Result.IsSuccessStatusCode)
-            {
-                Task<Book> messageResult = httpResponseMessage.Result.Content.ReadAsAsync<Book>();
-                messageResult.Wait();
-                return messageResult.Result;
-            }
-            return null;
+        //private static List<Book> ResponseContentMultipleBooks(Task<HttpResponseMessage> httpResponseMessage)
+        //{
+        //    httpResponseMessage.Wait();
+        //    return GetObjectFromResponse<List<Book>>(httpResponseMessage);
+        //}
+
+        private static ResponseMessageContent ResponseContentMessage(Task<HttpResponseMessage> httpResponseMessage)
+        {
+            var responseMessageContent = GetObjectFromResponse<ResponseMessageContent>(httpResponseMessage);
+            return GetObjectFromResponse<ResponseMessageContent>(httpResponseMessage);
         }
 
-        private static List<Book> ResponseContentMultipleBooks(Task<HttpResponseMessage> httpResponseMessage)
+        private static T GetObjectFromResponse<T>(Task<HttpResponseMessage> httpResponseMessage)
         {
             httpResponseMessage.Wait();
 
             if (httpResponseMessage.Result.IsSuccessStatusCode)
             {
-                Task<List<Book>> messageResult = httpResponseMessage.Result.Content.ReadAsAsync<List<Book>>();
+                var messageResult = httpResponseMessage.Result.Content.ReadAsAsync<T>();
                 messageResult.Wait();
                 return messageResult.Result;
             }
-            return null;
+            return default(T);
         }
     }
 }
