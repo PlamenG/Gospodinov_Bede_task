@@ -62,7 +62,7 @@ namespace Gospodinov_Bede_task.StepsDefinition
             var response = ScenarioContext.Current.Get<ResponseCodeAndPayload<List<Book>>>("responseCodeAdnPayload");
             Assert.AreEqual(HttpStatusCode.BadRequest.ToString()
                             , response.ResponseCode
-                            , "Request did NOT fail with Bad Request error but was - {0}", response);
+                            , "Request did NOT fail with Bad Request error but was - {0}", response.ResponseCode);
         }
 
     }
